@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "id": "Quaid_Quingalion_id",
+  "name": "Quaid Quingalion",
+  "card_class": "hero",
+  "background_color": "green",
+  "subtitle": "O Arqueiro Arcano",
+  "description": null,
+  "power": 2,
+  "attributes": {
+    "attack": 2,
+    "defense": 0,
+    "arcane_magic": 1,
+    "divine_magic": 0,
+    "stealth": 0
+  },
+  "abilities": [],
+  "advantages": [
+    "Iniciativa"
+  ],
+  "tags": [
+    "archer",
+    "arcane"
+  ],
+  "notes": "A carta apresenta a característica Iniciativa. O efeito mecânico específico deve seguir o livro de regras."
+}

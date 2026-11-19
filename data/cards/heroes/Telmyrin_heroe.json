@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "id": "hero_telmyrin",
+  "name": "Telmyrin",
+  "card_class": "hero",
+  "background_color": "green",
+  "subtitle": "A Caçadora",
+  "description": null,
+  "power": 2,
+  "attributes": {
+    "attack": 2,
+    "defense": 0,
+    "arcane_magic": 0,
+    "divine_magic": 0,
+    "stealth": 1
+  },
+  "abilities": [
+    {
+      "name": "Iniciativa Condicional",
+      "type": "conditional_passive",
+      "text": "Iniciativa contra Feras, dragões e abominações.",
+      "trigger": "combat_against_target_type",
+      "condition": {
+        "target_types": [
+          "beast",
+          "dragon",
+          "abomination"
+        ]
+      },
+      "effect": {
+        "type": "grant_advantage",
+        "advantage": "Iniciativa"
+      },
+      "target": "self",
+      "duration": "while_condition_met"
+    },
+    {
+      "name": "Saque da Caçada",
+      "type": "triggered",
+      "text": "Quando você fere um inimigo, compre uma carta e o oponente descarta uma carta aleatória.",
+      "trigger": "enemy_wounded",
+      "effect": {
+        "type": "multiple",
+        "effects": [
+          {
+            "type": "draw_cards",
+            "target": "self",
+            "quantity": 1
+          },
+          {
+            "type": "discard_cards",
+            "target": "opponent",
+            "quantity": 1,
+            "random": true
+          }
+        ]
+      },
+      "duration": "immediate"
+    }
+  ],
+  "advantages": [],
+  "tags": [],
+  "notes": ""
+}

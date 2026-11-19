@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0",
+  "id": "hero_zirla",
+  "name": "Zirla",
+  "card_class": "hero",
+  "background_color": "green",
+  "subtitle": "A Protetora",
+  "description": null,
+  "power": 2,
+  "attributes": {
+    "attack": 0,
+    "defense": 2,
+    "arcane_magic": 1,
+    "divine_magic": 0,
+    "stealth": 0
+  },
+  "abilities": [
+    {
+      "name": "Proteção Arcana",
+      "type": "active",
+      "attribute": "arcane_magic",
+      "text": "Seus outros personagens não podem ser alvo até o fim do round.",
+      "effect": {
+        "type": "untargetable",
+        "target": "own_other_characters"
+      },
+      "trigger": null,
+      "duration": "until_end_of_round"
+    }
+  ],
+  "advantages": [],
+  "tags": [],
+  "notes": ""
+}

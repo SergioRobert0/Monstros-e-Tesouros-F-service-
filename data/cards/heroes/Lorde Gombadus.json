@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "id": "hero_lorde_gombadus",
+  "name": "Lorde Gombadus",
+  "card_class": "hero",
+  "background_color": "green",
+  "subtitle": "Ex-Paladino",
+  "description": null,
+  "power": 2,
+  "attributes": {
+    "attack": 0,
+    "defense": 1,
+    "arcane_magic": 0,
+    "divine_magic": 2,
+    "stealth": 0
+  },
+  "abilities": [
+    {
+      "name": "Expurgo Profano",
+      "type": "active",
+      "attribute": "divine_magic",
+      "text": "Alvo = um Demônio ou Morto-vivo. Jogue D. Se D + Poder de Gombadus for > Poder do alvo, o alvo é ferido.",
+      "target": {
+        "type": "enemy",
+        "target_types": [
+          "demon",
+          "undead"
+        ],
+        "quantity": 1
+      },
+      "condition": {
+        "type": "dice_roll_check",
+        "die": "d6",
+        "expression": "d6 + self.power > target.power"
+      },
+      "effect": {
+        "type": "wound",
+        "target": "selected_target",
+        "quantity": 1
+      },
+      "trigger": null,
+      "duration": "immediate"
+    }
+  ],
+  "advantages": [],
+  "tags": [],
+  "notes": ""
+}

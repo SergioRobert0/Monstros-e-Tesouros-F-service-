@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0",
+  "id": "hero_lorde_kurvall",
+  "name": "Lorde Kurvall",
+  "card_class": "hero",
+  "background_color": "green",
+  "subtitle": "O Cavaleiro",
+  "description": null,
+  "power": 3,
+  "attributes": {
+    "attack": 1,
+    "defense": 2,
+    "arcane_magic": 0,
+    "divine_magic": 0,
+    "stealth": 0
+  },
+  "abilities": [
+    {
+      "name": "Golpe Adicional",
+      "type": "triggered",
+      "text": "Quando Lorde Kurvall ganha um round, jogue D. Se D = 1 ou 6, você pode ferir mais um outro inimigo.",
+      "trigger": "round_win",
+      "condition": {
+        "type": "dice_roll",
+        "die": "d6",
+        "target_values": [1, 6]
+      },
+      "effect": {
+        "type": "wound",
+        "target": "other_enemy",
+        "quantity": 1,
+        "optional": true
+      },
+      "duration": "immediate"
+    }
+  ],
+  "advantages": [],
+  "tags": [],
+  "notes": ""
+}

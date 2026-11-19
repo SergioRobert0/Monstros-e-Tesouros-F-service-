@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0",
+  "id": "hero_aldebaran",
+  "name": "Aldebaran",
+  "card_class": "hero",
+  "background_color": "green",
+  "subtitle": "O Druida",
+  "forms": {
+    "human": {
+      "subtitle": "Forma humana",
+      "power": 2,
+      "attributes": {
+        "attack": 1,
+        "defense": 0,
+        "arcane_magic": 0,
+        "divine_magic": 2,
+        "stealth": 0
+      },
+      "abilities": [
+        {
+          "name": "Transformação Animal",
+          "type": "active",
+          "effect": {
+            "type": "transform",
+            "target_form": "animal"
+          }
+        }
+      ]
+    },
+    "animal": {
+      "subtitle": "Forma animal",
+      "power": 4,
+      "attributes": {
+        "attack": 3,
+        "defense": 1,
+        "arcane_magic": 0,
+        "divine_magic": 0,
+        "stealth": 0
+      },
+      "abilities": [
+        {
+          "name": "Retorno à Forma Humana",
+          "type": "triggered",
+          "trigger": "combat_end",
+          "effect": {
+            "type": "transform",
+            "target_form": "human"
+          }
+        }
+      ]
+    }
+  },
+  "initial_form": "human",
+  "tags": ["transformation"],
+  "notes": ""
+}

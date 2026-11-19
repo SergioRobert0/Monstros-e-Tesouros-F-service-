@@ -1,0 +1,259 @@
+{
+	"batch_duration_ms": 51,
+	"game_count": 10,
+	"games": [
+		{
+			"action_log": [],
+			"blockers": [
+				"Card definition directory res://data/cards is missing.",
+				"No validated hero card definitions are available to create the required player teams.",
+				"GameController has no complete turn or game lifecycle entry point.",
+				"LegalActions currently exposes no mandatory turn, terrain, monster, combat, escape, or reward decisions."
+			],
+			"combat_log": [],
+			"duration_ms": 1,
+			"experience_recorded": true,
+			"final_game_status": "active",
+			"max_turns": 50,
+			"seed": 7001,
+			"status": "blocked",
+			"turn_log": [],
+			"turns": 0,
+			"victory_evaluation": {
+				"finished": false,
+				"reason": "",
+				"winner_id": ""
+			},
+			"winner_id": ""
+		},
+		{
+			"action_log": [],
+			"blockers": [
+				"Card definition directory res://data/cards is missing.",
+				"No validated hero card definitions are available to create the required player teams.",
+				"GameController has no complete turn or game lifecycle entry point.",
+				"LegalActions currently exposes no mandatory turn, terrain, monster, combat, escape, or reward decisions."
+			],
+			"combat_log": [],
+			"duration_ms": 1,
+			"experience_recorded": true,
+			"final_game_status": "active",
+			"max_turns": 50,
+			"seed": 7002,
+			"status": "blocked",
+			"turn_log": [],
+			"turns": 0,
+			"victory_evaluation": {
+				"finished": false,
+				"reason": "",
+				"winner_id": ""
+			},
+			"winner_id": ""
+		},
+		{
+			"action_log": [],
+			"blockers": [
+				"Card definition directory res://data/cards is missing.",
+				"No validated hero card definitions are available to create the required player teams.",
+				"GameController has no complete turn or game lifecycle entry point.",
+				"LegalActions currently exposes no mandatory turn, terrain, monster, combat, escape, or reward decisions."
+			],
+			"combat_log": [],
+			"duration_ms": 1,
+			"experience_recorded": true,
+			"final_game_status": "active",
+			"max_turns": 50,
+			"seed": 7003,
+			"status": "blocked",
+			"turn_log": [],
+			"turns": 0,
+			"victory_evaluation": {
+				"finished": false,
+				"reason": "",
+				"winner_id": ""
+			},
+			"winner_id": ""
+		},
+		{
+			"action_log": [],
+			"blockers": [
+				"Card definition directory res://data/cards is missing.",
+				"No validated hero card definitions are available to create the required player teams.",
+				"GameController has no complete turn or game lifecycle entry point.",
+				"LegalActions currently exposes no mandatory turn, terrain, monster, combat, escape, or reward decisions."
+			],
+			"combat_log": [],
+			"duration_ms": 1,
+			"experience_recorded": true,
+			"final_game_status": "active",
+			"max_turns": 50,
+			"seed": 7004,
+			"status": "blocked",
+			"turn_log": [],
+			"turns": 0,
+			"victory_evaluation": {
+				"finished": false,
+				"reason": "",
+				"winner_id": ""
+			},
+			"winner_id": ""
+		},
+		{
+			"action_log": [],
+			"blockers": [
+				"Card definition directory res://data/cards is missing.",
+				"No validated hero card definitions are available to create the required player teams.",
+				"GameController has no complete turn or game lifecycle entry point.",
+				"LegalActions currently exposes no mandatory turn, terrain, monster, combat, escape, or reward decisions."
+			],
+			"combat_log": [],
+			"duration_ms": 2,
+			"experience_recorded": true,
+			"final_game_status": "active",
+			"max_turns": 50,
+			"seed": 7005,
+			"status": "blocked",
+			"turn_log": [],
+			"turns": 0,
+			"victory_evaluation": {
+				"finished": false,
+				"reason": "",
+				"winner_id": ""
+			},
+			"winner_id": ""
+		},
+		{
+			"action_log": [],
+			"blockers": [
+				"Card definition directory res://data/cards is missing.",
+				"No validated hero card definitions are available to create the required player teams.",
+				"GameController has no complete turn or game lifecycle entry point.",
+				"LegalActions currently exposes no mandatory turn, terrain, monster, combat, escape, or reward decisions."
+			],
+			"combat_log": [],
+			"duration_ms": 2,
+			"experience_recorded": true,
+			"final_game_status": "active",
+			"max_turns": 50,
+			"seed": 7006,
+			"status": "blocked",
+			"turn_log": [],
+			"turns": 0,
+			"victory_evaluation": {
+				"finished": false,
+				"reason": "",
+				"winner_id": ""
+			},
+			"winner_id": ""
+		},
+		{
+			"action_log": [],
+			"blockers": [
+				"Card definition directory res://data/cards is missing.",
+				"No validated hero card definitions are available to create the required player teams.",
+				"GameController has no complete turn or game lifecycle entry point.",
+				"LegalActions currently exposes no mandatory turn, terrain, monster, combat, escape, or reward decisions."
+			],
+			"combat_log": [],
+			"duration_ms": 11,
+			"experience_recorded": true,
+			"final_game_status": "active",
+			"max_turns": 50,
+			"seed": 7007,
+			"status": "blocked",
+			"turn_log": [],
+			"turns": 0,
+			"victory_evaluation": {
+				"finished": false,
+				"reason": "",
+				"winner_id": ""
+			},
+			"winner_id": ""
+		},
+		{
+			"action_log": [],
+			"blockers": [
+				"Card definition directory res://data/cards is missing.",
+				"No validated hero card definitions are available to create the required player teams.",
+				"GameController has no complete turn or game lifecycle entry point.",
+				"LegalActions currently exposes no mandatory turn, terrain, monster, combat, escape, or reward decisions."
+			],
+			"combat_log": [],
+			"duration_ms": 10,
+			"experience_recorded": true,
+			"final_game_status": "active",
+			"max_turns": 50,
+			"seed": 7008,
+			"status": "blocked",
+			"turn_log": [],
+			"turns": 0,
+			"victory_evaluation": {
+				"finished": false,
+				"reason": "",
+				"winner_id": ""
+			},
+			"winner_id": ""
+		},
+		{
+			"action_log": [],
+			"blockers": [
+				"Card definition directory res://data/cards is missing.",
+				"No validated hero card definitions are available to create the required player teams.",
+				"GameController has no complete turn or game lifecycle entry point.",
+				"LegalActions currently exposes no mandatory turn, terrain, monster, combat, escape, or reward decisions."
+			],
+			"combat_log": [],
+			"duration_ms": 10,
+			"experience_recorded": true,
+			"final_game_status": "active",
+			"max_turns": 50,
+			"seed": 7009,
+			"status": "blocked",
+			"turn_log": [],
+			"turns": 0,
+			"victory_evaluation": {
+				"finished": false,
+				"reason": "",
+				"winner_id": ""
+			},
+			"winner_id": ""
+		},
+		{
+			"action_log": [],
+			"blockers": [
+				"Card definition directory res://data/cards is missing.",
+				"No validated hero card definitions are available to create the required player teams.",
+				"GameController has no complete turn or game lifecycle entry point.",
+				"LegalActions currently exposes no mandatory turn, terrain, monster, combat, escape, or reward decisions."
+			],
+			"combat_log": [],
+			"duration_ms": 11,
+			"experience_recorded": true,
+			"final_game_status": "active",
+			"max_turns": 50,
+			"seed": 7010,
+			"status": "blocked",
+			"turn_log": [],
+			"turns": 0,
+			"victory_evaluation": {
+				"finished": false,
+				"reason": "",
+				"winner_id": ""
+			},
+			"winner_id": ""
+		}
+	],
+	"max_turns": 50,
+	"schema_version": 1,
+	"seed_end": 7010,
+	"seed_start": 7001,
+	"statistics": {
+		"blocked": 10,
+		"completed": 0,
+		"draws": 0,
+		"duration_ms": 50,
+		"losses": 0,
+		"turns": 0,
+		"wins": 0
+	}
+}

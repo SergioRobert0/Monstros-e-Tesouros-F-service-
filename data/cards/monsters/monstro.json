@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "id": "unique_card_id",
+  "name": "Nome da carta",
+  "card_class": "monster",
+  "background_color": "red",
+  "subtitle": null,
+  "description": null,
+  "monster_type": "Tipo do monstro",
+  "monster_level": 1,
+  "power": 0,
+  "attributes": {
+    "attack": 0,
+    "defense": 0,
+    "arcane_magic": 0,
+    "divine_magic": 0,
+    "stealth": 0
+  },
+  "abilities": [],
+  "advantages": [],
+  "evolution_experience": [],
+  "tags": [],
+  "notes": ""
+}

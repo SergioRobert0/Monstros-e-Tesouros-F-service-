@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0",
+  "id": "Thoraxx_id",
+  "name": "Thoraxx",
+  "card_class": "hero",
+  "background_color": "green",
+  "subtitle": "O Bárbaro",
+  "description": null,
+  "power": 3,
+  "attributes": {
+    "attack": 3,
+    "defense": 0,
+    "arcane_magic": 0,
+    "divine_magic": 0,
+    "stealth": 0
+  },
+  "abilities": [],
+  "advantages": [],
+  "tags": [],
+  "notes": ""
+}

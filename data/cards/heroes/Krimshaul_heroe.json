@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0",
+  "id": "Krimshaul_id",
+  "name": "Krimshaul",
+  "card_class": "hero",
+  "background_color": "green",
+  "subtitle": "O Ladino",
+  "description": null,
+  "power": 2,
+  "attributes": {
+    "attack": 0,
+    "defense": 0,
+    "arcane_magic": 0,
+    "divine_magic": 0,
+    "stealth": 3
+  },
+  "abilities": [],
+  "advantages": [],
+  "tags": [],
+  "notes": ""
+}

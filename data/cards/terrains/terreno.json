@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "id": "unique_card_id",
+  "name": "Nome da carta",
+  "card_class": "terrain",
+  "background_color": "blue",
+  "subtitle": null,
+  "description": null,
+  "monster_icons": [
+    {
+      "level": 1,
+      "operator": "plus",
+      "quantity": 1
+    }
+  ],
+  "treasure_bonus": 0,
+  "effects": [],
+  "tags": [],
+  "notes": ""
+}

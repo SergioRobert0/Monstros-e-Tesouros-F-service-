@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0",
+  "id": "hero_remiel",
+  "name": "Remiel",
+  "card_class": "hero",
+  "background_color": "green",
+  "subtitle": "O Paladino",
+  "description": null,
+  "power": 2,
+  "attributes": {
+    "attack": 2,
+    "defense": 0,
+    "arcane_magic": 0,
+    "divine_magic": 1,
+    "stealth": 0
+  },
+  "abilities": [
+    {
+      "name": "Cura",
+      "type": "active",
+      "text": "Descarte três cartas de ação. Cure um de seus personagens feridos.",
+      "cost": {
+        "type": "discard_cards",
+        "card_class": "action",
+        "quantity": 3
+      },
+      "effect": {
+        "type": "heal",
+        "target": "own_wounded_character",
+        "quantity": 1
+      },
+      "trigger": null,
+      "duration": "immediate"
+    }
+  ],
+  "advantages": [],
+  "tags": [],
+  "notes": ""
+}

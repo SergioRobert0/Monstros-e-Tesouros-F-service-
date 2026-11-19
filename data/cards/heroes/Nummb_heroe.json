@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "id": "hero_nummb",
+  "name": "Nummb",
+  "card_class": "hero",
+  "background_color": "green",
+  "subtitle": "O Feiticeiro",
+  "description": null,
+  "power": 1,
+  "attributes": {
+    "attack": 1,
+    "defense": 0,
+    "arcane_magic": 2,
+    "divine_magic": 0,
+    "stealth": 0
+  },
+  "abilities": [
+    {
+      "name": "Ações Múltiplas",
+      "type": "passive",
+      "text": "Nummb pode usar 2 ações por round.",
+      "effect": {
+        "type": "set_actions_per_round",
+        "target": "self",
+        "value": 2
+      },
+      "duration": "continuous"
+    }
+  ],
+  "advantages": [],
+  "tags": [],
+  "notes": ""
+}

@@ -1,0 +1,563 @@
+{
+  "document": {
+    "title": "Monstros & Tesouros — Especificação de Regras",
+    "version": "1.8",
+    "source_pages": 16,
+    "scope": "Modo Aventura como base; variantes separadas",
+    "status": "Especificação inicial; sem código executável"
+  },
+  "game": {
+    "default_mode": "adventure",
+    "players": {
+      "min": 2,
+      "max": 4,
+      "recommended": 2
+    },
+    "starting_heroes_per_player": 3,
+    "initial_action_hand": 6,
+    "default_hand_capacity": 6,
+    "turn_order": "clockwise",
+    "default_objective": {
+      "id": "conqueror",
+      "type": "conquer_terrains",
+      "target": 5
+    },
+    "alternative_objectives": [
+      {
+        "id": "gold_and_fame",
+        "type": "treasure_points",
+        "target": 20
+      },
+      {
+        "id": "dragon_slayer",
+        "type": "defeat_named_monster",
+        "target": "Dragon"
+      },
+      {
+        "id": "only_one",
+        "type": "last_player_with_living_heroes"
+      },
+      {
+        "id": "legendary_hunter",
+        "type": "defeat_any",
+        "targets": [
+          "Tarrascão",
+          "Observador"
+        ]
+      },
+      {
+        "id": "purifier",
+        "type": "defeat_any",
+        "targets": [
+          "Infierna",
+          "Ashmod",
+          "Maldoblarkus"
+        ]
+      },
+      {
+        "id": "conjuror",
+        "type": "defeat_named_monster",
+        "target": "Demiliche"
+      },
+      {
+        "id": "pest_exterminator",
+        "type": "defeat_monster_family",
+        "families": [
+          "Orcs",
+          "Goblins"
+        ],
+        "target": 5
+      },
+      {
+        "id": "liberator",
+        "type": "defeat_any",
+        "targets": [
+          "Neree Imicus",
+          "Lotharjah"
+        ]
+      },
+      {
+        "id": "deconstructor",
+        "type": "defeat_any",
+        "targets": [
+          "Jaganauta",
+          "Mega-Golem"
+        ]
+      },
+      {
+        "id": "hero",
+        "type": "defeat_monster_min_level",
+        "minimum_level": 10
+      },
+      {
+        "id": "time_victory",
+        "type": "most_treasure_points_at_time_limit"
+      }
+    ],
+    "deck_counts": {
+      "heroes": 35,
+      "monsters": 100,
+      "terrains": 65,
+      "treasures_relics": 100,
+      "actions": 100
+    }
+  },
+  "attributes": {
+    "range": [
+      0,
+      4
+    ],
+    "hero_evolution_max": 4,
+    "list": [
+      "attack",
+      "defense",
+      "arcane_magic",
+      "divine_magic",
+      "stealth"
+    ]
+  },
+  "definitions": {
+    "character": "Carta de herói ou monstro.",
+    "group": "Conjunto de personagens do mesmo jogador.",
+    "opponent": "Jogador ou controlador do grupo inimigo.",
+    "ability": "Texto precedido por ícone de atributo; pode ser usado como ação.",
+    "advantage": "Efeito sem ícone de atributo; fica ativo ou é ativado por gatilho.",
+    "round": "Uma rodada completa de combate.",
+    "target": "Personagem explicitamente indicado pela palavra alvo."
+  },
+  "character_states": {
+    "normal": {
+      "description": "Sem ferimento."
+    },
+    "wounded": {
+      "effects": [
+        "Poder -1",
+        "Perde iniciativa"
+      ],
+      "next_wound": "dead"
+    },
+    "dead": {
+      "effects": [
+        "Não age no combate",
+        "Poder e atributos passam a zero",
+        "Não conta no combate"
+      ]
+    },
+    "heal": {
+      "from": "wounded",
+      "to": "normal",
+      "cannot_restore_dead": true
+    },
+    "resurrect": {
+      "from": "dead",
+      "to": "normal",
+      "cannot_heal_wounded": true
+    }
+  },
+  "card_types": {
+    "hero": [
+      "power",
+      "attributes",
+      "name",
+      "subtitle",
+      "abilities_or_advantages"
+    ],
+    "monster": [
+      "power",
+      "attributes",
+      "name",
+      "type",
+      "level",
+      "abilities_or_advantages",
+      "evolution_experience"
+    ],
+    "terrain": [
+      "monster_level_icons",
+      "monster_quantity",
+      "treasure_bonus",
+      "other_effects"
+    ],
+    "action": [
+      "power_bonus",
+      "name",
+      "attribute_requirement",
+      "effect"
+    ],
+    "treasure": [
+      "power_bonus",
+      "name",
+      "type",
+      "attribute_requirement",
+      "point_value",
+      "ability_or_advantage"
+    ]
+  },
+  "setup": [
+    "Separar as pilhas de heróis, monstros, terrenos, tesouros/relíquias e ações.",
+    "Cada jogador rola um dado; maior resultado inicia. Empates devem ser resolvidos por nova rolagem (inferência operacional a confirmar).",
+    "Em ordem, cada jogador escolhe um herói por vez até todos terem três.",
+    "Separar heróis não escolhidos.",
+    "Cada jogador compra seis cartas de ação.",
+    "Todos concordam com um objetivo antes da partida."
+  ],
+  "turn_state_machine": {
+    "initial": "TURN_START",
+    "states": [
+      {
+        "id": "TURN_START",
+        "next": "HAND_REFRESH"
+      },
+      {
+        "id": "HAND_REFRESH",
+        "action": "Descartar quantas cartas de ação desejar e comprar até a capacidade da mão.",
+        "next": "PATH_SELECTION"
+      },
+      {
+        "id": "PATH_SELECTION",
+        "choices": {
+          "tavern": "TAVERN",
+          "temple": "TEMPLE",
+          "explore": "TERRAIN_REVEAL"
+        }
+      },
+      {
+        "id": "TAVERN",
+        "action": "Trocar um herói do grupo por outro disponível ou comprar carta de ação.",
+        "next": "TURN_END"
+      },
+      {
+        "id": "TEMPLE",
+        "action": "Curar todos os heróis feridos; encerra o turno imediatamente.",
+        "next": "TURN_END"
+      },
+      {
+        "id": "TERRAIN_REVEAL",
+        "action": "Revelar terreno; entrar ou rejeitar.",
+        "choices": {
+          "enter": "MONSTER_REVEAL",
+          "reject": "TERRAIN_REVEAL_OR_END"
+        }
+      },
+      {
+        "id": "TERRAIN_REVEAL_OR_END",
+        "action": "Pode revelar outro terreno, até três rejeições; depois encerra turno.",
+        "next": "TERRAIN_REVEAL"
+      },
+      {
+        "id": "MONSTER_REVEAL",
+        "action": "Resolver cada ícone de monstro do terreno, de cima para baixo.",
+        "next": "COMBAT_SETUP"
+      },
+      {
+        "id": "COMBAT_SETUP",
+        "action": "Monstros compatíveis formam o grupo oponente; rejeitados voltam embaralhados à pilha.",
+        "next": "COMBAT_ROUND"
+      },
+      {
+        "id": "COMBAT_ROUND",
+        "action": "Iniciativa, ações alternadas, poder dos grupos, ferimentos e resolução.",
+        "choices": {
+          "continue": "COMBAT_ROUND",
+          "active_player_wins": "REWARDS",
+          "monsters_win": "ELIMINATION_CHECK",
+          "active_player_escapes": "ESCAPE_RESOLUTION",
+          "opponent_escapes": "REWARDS"
+        }
+      },
+      {
+        "id": "ESCAPE_RESOLUTION",
+        "action": "O oponente escolhe um personagem do grupo que fugiu para receber ferimento; não há tesouro nem conquista.",
+        "next": "POST_COMBAT"
+      },
+      {
+        "id": "ELIMINATION_CHECK",
+        "action": "Se todos os heróis do jogador ativo morreram, ele é eliminado.",
+        "next": "GAME_OVER_CHECK"
+      },
+      {
+        "id": "REWARDS",
+        "action": "Conquista, pontos de tesouro, seleção de tesouros, equipamento e experiência.",
+        "next": "POST_COMBAT"
+      },
+      {
+        "id": "POST_COMBAT",
+        "action": "Jogador ativo pode descartar e comprar até a capacidade da mão.",
+        "next": "TURN_END"
+      },
+      {
+        "id": "TURN_END",
+        "action": "Verificar objetivo e passar a vez em sentido horário.",
+        "next": "GAME_OVER_CHECK"
+      },
+      {
+        "id": "GAME_OVER_CHECK",
+        "choices": {
+          "continues": "NEXT_PLAYER",
+          "finished": "GAME_OVER"
+        }
+      },
+      {
+        "id": "NEXT_PLAYER",
+        "next": "TURN_START"
+      },
+      {
+        "id": "GAME_OVER",
+        "action": "Declarar vencedor ou derrota no modo solo."
+      }
+    ],
+    "constraints": [
+      "A fase de compra após combate não ocorre quando o jogador escolhe Taverna ou Templo.",
+      "O oponente não compra nem descarta nessa fase pós-combate.",
+      "O jogador pode rejeitar até três terrenos; com Exploração Obrigatória deve entrar no primeiro.",
+      "A pilha de terrenos vazia não tem tratamento definido no livro."
+    ]
+  },
+  "terrain_monster_generation": {
+    "level_icon_plus": "Nível indicado ou superior.",
+    "level_icon_minus": "Nível indicado ou inferior.",
+    "algorithm": [
+      "Para cada ícone, revelar monstros até encontrar um nível compatível.",
+      "Adicionar o monstro compatível ao grupo oponente.",
+      "Repetir independentemente para o próximo ícone.",
+      "Embaralhar os monstros rejeitados de volta na pilha."
+    ],
+    "unresolved": "O livro não define o que fazer se a pilha acabar sem encontrar monstro compatível."
+  },
+  "combat": {
+    "round_order": [
+      "INITIATIVE",
+      "ACTIONS",
+      "GROUP_POWER",
+      "WOUND_AND_RESOLUTION"
+    ],
+    "initiative": [
+      "Se apenas um grupo possui iniciativa, ele age primeiro.",
+      "Se nenhum ou ambos possuem iniciativa, cada lado rola um dado; maior resultado começa.",
+      "Empate na rolagem: jogar novamente."
+    ],
+    "actions": {
+      "one_per_character_per_round": true,
+      "mandatory": true,
+      "alternation": "Jogadores alternam escolhendo um personagem elegível para agir até todos terem agido ou ambos não desejarem continuar.",
+      "types": [
+        "Jogar carta de ação da mão, respeitando requisito de atributo.",
+        "Usar habilidade do personagem.",
+        "Usar habilidade de tesouro carregado.",
+        "Comprar carta de ação do baralho.",
+        "Pegar tesouro de aliado vivo ou morto, se puder utilizá-lo.",
+        "O jogador ativo pode fugir por ação, conforme regra aplicável."
+      ],
+      "resolution": "Cada ação resolve integralmente antes da próxima.",
+      "power_modifiers": "Alterações de poder são aplicadas imediatamente, respeitando a ordem das ações.",
+      "card_power_bonus": "Bônus de poder da carta é aplicado ao personagem que executou a ação."
+    },
+    "group_power": {
+      "formula": "Soma do poder dos personagens vivos participantes, incluindo modificadores, mais um dado por grupo.",
+      "winner": "Maior total vence o round.",
+      "tie": "Ninguém sofre ferimento e começa novo round."
+    },
+    "wound_resolution": {
+      "winner_selects_one_enemy": true,
+      "selection_is_not_targeting": true,
+      "first_wound": "Marcar carta como ferida, reduzir poder em 1 e remover iniciativa.",
+      "second_wound": "Matar personagem que já estava ferido.",
+      "round_end": "Encerrar efeitos até o fim do round e descartar cartas de ação usadas, salvo duração maior explícita."
+    },
+    "end_condition": "Combate termina quando um lado foge ou todos os personagens de um grupo morrem."
+  },
+  "escape": {
+    "active_player": "Pode usar uma ação de personagem para fugir.",
+    "opponent": "Não foge por escolha livre; precisa de carta de ação ou habilidade.",
+    "active_player_consequence": [
+      "Combate termina",
+      "Oponente escolhe um herói para ferir",
+      "Sem tesouros",
+      "Sem conquista do terreno"
+    ],
+    "needs_confirmation": "O texto de recompensas descreve fuga de monstros, mas a sequência geral e os efeitos de fuga do oponente devem ser confirmados."
+  },
+  "rewards": {
+    "conquest": "Terreno só é conquistado se houve combate e o jogador ativo venceu.",
+    "treasure_points": {
+      "formula": "Soma dos níveis dos monstros derrotados + bônus de tesouro do terreno.",
+      "all_monsters_escape_without_death": "Recebe apenas bônus do terreno, se houver.",
+      "some_monsters_defeated": "Soma níveis dos derrotados ao bônus do terreno."
+    },
+    "treasure_draft": {
+      "reveal": 5,
+      "selection": "Escolher um ou mais tesouros cujo custo total não ultrapasse os pontos disponíveis.",
+      "unused_points": "São perdidos.",
+      "unselected_cards": "Voltam embaralhadas à pilha de tesouros."
+    },
+    "equipment": {
+      "requirements": "Herói só usa tesouro se cumprir requisito mínimo de atributo.",
+      "limits": {
+        "weapon": 1,
+        "shield": 1,
+        "scrolls": "Sem limite numérico explícito; respeitar compatibilidade."
+      },
+      "unusable_treasure": "Pode ser carregado virado para baixo para pontuação de objetivos, sem bônus ou habilidades."
+    },
+    "experience": {
+      "source": "Ícones de evolução/experiência dos monstros derrotados.",
+      "allocation": "Escolher herói e alinhar carta do monstro atrás dele para aplicar os bônus.",
+      "transferable": false,
+      "hero_resurrected": "Mantém experiência.",
+      "hero_dies_or_is_replaced": "Experiência não pode ser transferida.",
+      "unused_monster_cards": "Descartar e reembaralhar na pilha de monstros."
+    }
+  },
+  "management_rules": {
+    "treasure_reassignment": {
+      "outside_combat": "Livre antes de revelar monstros ou depois do combate.",
+      "during_combat": "Personagem que receberá tesouro gasta uma ação."
+    },
+    "familiars": {
+      "treated_as_characters": true,
+      "can_act_in_combat": true,
+      "must_be_assigned_to_eligible_character": true,
+      "max_per_character": 1,
+      "replace_old_familiar": "Descartar o antigo.",
+      "protected_from_treasure_destruction": true,
+      "can_use_equipment": false,
+      "owner_dies": "Descartar se não houver outro personagem com atributo necessário."
+    }
+  },
+  "victory": {
+    "standard": "Objetivo combinado alcançado ou apenas um jogador permanece com heróis vivos.",
+    "optional_overwhelming_victory": "Se poder dos heróis superar três vezes o poder dos monstros ao fim do round, todos os monstros são feridos."
+  },
+  "variants": {
+    "dungeon_master": {
+      "recommended_players": [
+        3,
+        4
+      ],
+      "dm_has_turn": false,
+      "dm_controls": "Monstros",
+      "dm_goal": "Impedir objetivos e eliminar os demais jogadores.",
+      "suggested_rules": [
+        "mandatory_exploration",
+        "no_escape",
+        "no_help"
+      ]
+    },
+    "solo": {
+      "heroes": 3,
+      "special": [
+        "Compra/descarte somente no início do turno",
+        "Jogador revela monstros",
+        "Revelar seis cartas de ação para os monstros no início do combate",
+        "Jogador controla heróis e monstros"
+      ]
+    },
+    "arena": {
+      "heroes_per_player": 3,
+      "terrains": false,
+      "initial_combat": true,
+      "initial_evolution_optional": true,
+      "initial_equipment_optional": true,
+      "winner": "Último jogador sobrevivente"
+    },
+    "beast_arena": {
+      "teams": "Monstros",
+      "budget": "Total de níveis combinado entre jogadores",
+      "hero_level_equivalent": 2,
+      "equipment": false,
+      "evolution": false
+    }
+  },
+  "open_questions": [
+    {
+      "id": "Q01",
+      "priority": "critical",
+      "topic": "Initiative",
+      "question": "Empates na iniciativa são repetidos indefinidamente até haver vencedor?"
+    },
+    {
+      "id": "Q02",
+      "priority": "critical",
+      "topic": "Mandatory actions",
+      "question": "O que ocorre se um personagem não possuir nenhuma ação legal, embora a regra proíba passar?"
+    },
+    {
+      "id": "Q03",
+      "priority": "critical",
+      "topic": "Monster deck",
+      "question": "O que acontece se a pilha acabar antes de encontrar monstro compatível com um ícone do terreno?"
+    },
+    {
+      "id": "Q04",
+      "priority": "high",
+      "topic": "Terrain deck",
+      "question": "O que acontece quando a pilha de terrenos termina?"
+    },
+    {
+      "id": "Q05",
+      "priority": "high",
+      "topic": "Treasure selection",
+      "question": "Se nenhum dos cinco tesouros puder ser selecionado ou usado, qual é o procedimento?"
+    },
+    {
+      "id": "Q06",
+      "priority": "high",
+      "topic": "Attribute cap",
+      "question": "O limite 4 vale também para bônus temporários ou apenas para evolução permanente?"
+    },
+    {
+      "id": "Q07",
+      "priority": "high",
+      "topic": "Dead heroes",
+      "question": "Heróis mortos continuam no grupo para fins de transporte, transferência ou outros efeitos fora do combate?"
+    },
+    {
+      "id": "Q08",
+      "priority": "high",
+      "topic": "Opponent escape",
+      "question": "Qual é o efeito exato quando o grupo de monstros foge, incluindo fim do combate e cálculo das recompensas?"
+    },
+    {
+      "id": "Q09",
+      "priority": "medium",
+      "topic": "Action deck",
+      "question": "Se baralho de ações e descarte estiverem ambos vazios, como funciona a compra?"
+    },
+    {
+      "id": "Q10",
+      "priority": "medium",
+      "topic": "Healing",
+      "question": "Ao curar, quais modificadores temporários e efeitos de iniciativa são removidos ou recalculados?"
+    }
+  ],
+  "source_map": {
+    "definitions_and_attributes": [
+      4,
+      5
+    ],
+    "card_anatomy": [
+      6
+    ],
+    "objective_and_setup": [
+      7
+    ],
+    "turn_sequence_and_terrain_choices": [
+      8,
+      9
+    ],
+    "combat": [
+      10,
+      11
+    ],
+    "conquest_treasure_experience": [
+      12,
+      13
+    ],
+    "end_turn_and_variants": [
+      14,
+      15
+    ],
+    "table_layout": [
+      16
+    ]
+  }
+}

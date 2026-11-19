@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0",
+  "id": "unique_card_id",
+  "name": "Nome da carta",
+  "card_class": "treasure",
+  "background_color": "yellow",
+  "subtitle": null,
+  "description": null,
+  "treasure_points": 0,
+  "treasure_type": "Equipamento",
+  "equipment_slot": null,
+  "power_bonus": 0,
+  "attribute_requirement": {
+    "attribute": null,
+    "minimum_value": null
+  },
+  "abilities": [],
+  "advantages": [],
+  "tags": [],
+  "notes": ""
+}

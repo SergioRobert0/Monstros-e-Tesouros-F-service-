@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0",
+  "id": "Koruak_id",
+  "name": "Koruak",
+  "card_class": "hero",
+  "background_color": "green",
+  "subtitle": "O Guardião",
+  "description": null,
+  "power": 3,
+  "attributes": {
+    "attack": 0,
+    "defense": 3,
+    "arcane_magic": 0,
+    "divine_magic": 0,
+    "stealth": 0
+  },
+  "abilities": [],
+  "advantages": [],
+  "tags": [],
+  "notes": ""
+}

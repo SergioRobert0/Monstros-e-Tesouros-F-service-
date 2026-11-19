@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "id": "hero_flamelei",
+  "name": "Flamelei",
+  "card_class": "hero",
+  "background_color": "green",
+  "subtitle": "A Alquimista",
+  "description": null,
+  "power": 1,
+  "attributes": {
+    "attack": 0,
+    "defense": 0,
+    "arcane_magic": 2,
+    "divine_magic": 1,
+    "stealth": 0
+  },
+  "abilities": [
+    {
+      "name": "Destilação Alquímica",
+      "type": "active",
+      "attribute": "arcane_magic",
+      "text": "Descarte duas cartas. Revele tesouros até surgir uma poção. Flamelei pode usar esta poção imediatamente, ou ela é descartada.",
+      "cost": {
+        "type": "discard_cards",
+        "quantity": 2
+      },
+      "effect": {
+        "type": "reveal_until",
+        "source": "treasure_deck",
+        "target_subtype": "potion",
+        "action": {
+          "type": "use_immediately",
+          "actor": "self",
+          "optional": true,
+          "on_decline": "discard"
+        }
+      },
+      "trigger": null,
+      "duration": "immediate"
+    }
+  ],
+  "advantages": [],
+  "tags": [],
+  "notes": ""
+}

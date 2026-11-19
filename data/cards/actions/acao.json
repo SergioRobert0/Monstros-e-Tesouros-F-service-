@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "unique_card_id",
+  "name": "Nome da carta",
+  "card_class": "action",
+  "background_color": "purple",
+  "subtitle": null,
+  "description": null,
+  "power_bonus": 0,
+  "attribute_requirement": {
+    "attribute": null,
+    "minimum_value": null
+  },
+  "target": {
+    "scope": "enemy",
+    "selection": "single"
+  },
+  "effects": [],
+  "duration": "immediate",
+  "tags": [],
+  "notes": ""
+}

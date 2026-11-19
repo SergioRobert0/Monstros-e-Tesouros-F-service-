@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0",
+  "id": "hero_malko",
+  "name": "Malko",
+  "card_class": "hero",
+  "background_color": "green",
+  "subtitle": "O Sentinela",
+  "description": null,
+  "power": 2,
+  "attributes": {
+    "attack": 0,
+    "defense": 2,
+    "arcane_magic": 0,
+    "divine_magic": 0,
+    "stealth": 1
+  },
+  "abilities": [
+    {
+      "name": "Vigilância Defensiva",
+      "type": "triggered",
+      "text": "Quando Malko usa uma ação de Defesa, compre uma carta.",
+      "trigger": "use_action",
+      "condition": {
+        "actor": "self",
+        "action_attribute": "defense"
+      },
+      "effect": {
+        "type": "draw_cards",
+        "target": "self",
+        "quantity": 1
+      },
+      "duration": "immediate"
+    }
+  ],
+  "advantages": [],
+  "tags": [],
+  "notes": ""
+}

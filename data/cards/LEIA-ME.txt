@@ -1,0 +1,81 @@
+MODELOS JSON — MONSTROS & TESOUROS
+====================================
+
+ARQUIVOS
+- heroi.json: modelo para cartas de herói (fundo verde).
+- monstro.json: modelo para cartas de monstro (fundo vermelho).
+- terreno.json: modelo para cartas de terreno (fundo azul).
+- tesouro.json: modelo para cartas de tesouro (fundo amarelo).
+- acao.json: modelo para cartas de ação (fundo roxo; confirme a cor oficial desta classe no seu catálogo físico).
+
+COMO USAR
+1. Faça uma cópia do arquivo da classe desejada.
+2. Renomeie a cópia usando o nome da carta, sem espaços e sem acentos.
+   Ex.: faerin.json, feiticeiro_goblin.json, ponte.json.
+3. Edite os valores entre aspas ou números, sem apagar vírgulas/chaves.
+4. Salve a carta individual na pasta da classe correspondente.
+5. Não altere os nomes das propriedades (chaves) sem atualizar também o padrão do projeto.
+
+ESTRUTURA RECOMENDADA PARA ORGANIZAR O CATÁLOGO
+cartas/
+  herois/
+    faerin.json
+  monstros/
+    feiticeiro_goblin.json
+  terrenos/
+    ponte.json
+  tesouros/
+    cetro_de_misseis.json
+  acoes/
+    nome_da_acao.json
+
+ATRIBUTOS
+A ordem dos atributos é:
+1. attack = Ataque
+2. defense = Defesa
+3. arcane_magic = Magia Arcana
+4. divine_magic = Magia Divina
+5. stealth = Furtividade
+
+Para heróis e monstros, preencha cada atributo com o número mostrado na carta.
+Use 0 quando o valor for realmente zero. Use null somente quando o dado ainda não foi identificado.
+
+CAMPOS IMPORTANTES
+- id: identificador único, sem espaços. Ex.: hero_faerin.
+- card_class: não traduzir; usar hero, monster, terrain, treasure ou action.
+- background_color: green, red, blue, yellow ou purple conforme o modelo.
+- abilities / effects: listas; cada habilidade ou efeito deve ser um objeto.
+- null: dado desconhecido ou não aplicável. Não use "null" entre aspas.
+- []: lista vazia.
+- 0: valor numérico zero.
+
+PADRÃO PARA HABILIDADES E EFEITOS
+Quando preencher uma habilidade, prefira esta estrutura:
+{
+  "name": "Nome curto ou null",
+  "type": "passive",
+  "text": "Texto fiel ao que está impresso na carta",
+  "trigger": null,
+  "target": null,
+  "duration": "permanent"
+}
+
+Tipos sugeridos para type: passive, active, triggered, conditional_passive.
+Não invente regra para preencher campos que a carta não informa. Use null ou deixe a lista vazia.
+
+SÍMBOLOS E DADOS
+Quando um efeito usar símbolos gráficos (por exemplo, dado ou ícone de atributo), registre o significado em campos separados se ele estiver confirmado.
+Se não estiver claro, preserve a transcrição literal em "text" e registre a dúvida em "notes".
+Exemplo de notação provisória: "[DICE]" para o símbolo de dado. Não converta o símbolo em uma regra por suposição.
+
+VALIDAÇÃO
+Antes de salvar, confira:
+- O arquivo continua sendo JSON válido.
+- Nomes e textos foram transcritos exatamente.
+- Números não foram colocados entre aspas.
+- Cada carta tem id único.
+- A classe e a cor correspondem ao tipo da carta.
+
+IMPORTANTE
+A cor roxa da carta de ação foi usada como espaço reservado no modelo. Confirme a cor oficial das cartas de ação antes de preencher o catálogo.
+Os modelos são uma estrutura de cadastro, não uma interpretação adicional das regras do jogo.

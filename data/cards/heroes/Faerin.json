@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0",
+  "id": "hero_faerin",
+  "name": "Faerin",
+  "card_class": "hero",
+  "background_color": "green",
+  "subtitle": "A Ilusionista",
+  "description": null,
+  "power": 1,
+  "attributes": {
+    "attack": 0,
+    "defense": 0,
+    "arcane_magic": 2,
+    "divine_magic": 0,
+    "stealth": 1
+  },
+  "abilities": [
+    {
+      "name": "Véu Ilusório",
+      "type": "conditional_passive",
+      "text": "Faerin não pode ser alvo de ações dos inimigos, a não ser que tenha feito uma ação naquele round.",
+      "condition": {
+        "type": "actions_performed_this_round",
+        "actor": "self",
+        "operator": "==",
+        "value": 0
+      },
+      "effect": {
+        "type": "untargetable",
+        "by": "enemy_actions",
+        "target": "self"
+      },
+      "target": "self",
+      "duration": "while_condition_met"
+    }
+  ],
+  "advantages": [],
+  "tags": [],
+  "notes": ""
+}

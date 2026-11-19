@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0",
+  "id": "Harog_id",
+  "name": "Harog",
+  "card_class": "hero",
+  "background_color": "green",
+  "subtitle": "O Homem de Armas",
+  "description": "Horg pode usar duas armas.Se o fizer ,não poderá usar escudo.",
+  "power": 3,
+  "attributes": {
+    "attack": 2,
+    "defense": 1,
+    "arcane_magic": 0,
+    "divine_magic": 0,
+    "stealth": 0
+  },
+  "abilities": [
+  {
+    "name": "Combate com Duas Armas",
+    "type": "conditional_passive",
+    "text": "Harog pode usar duas armas. Se o fizer, não poderá usar escudo.",
+    "trigger": "Quando utilizar duas armas",
+    "target": "self",
+    "duration": "while_condition_met"
+  }
+],
+  "advantages": [],
+  "tags": [],
+  "notes": ""
+}
